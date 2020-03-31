@@ -1,11 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-     ____ _  __ __  __ __ __ ____
-    /  _// |/ // / / // //_// __ \
-   _/ / /    // /_/ // ,<  / /_/ /
-  /___//_/|_/ \____//_/|_| \____/
-
--->
 <html <?php language_attributes(); ?>>
   <head>
     <meta charset="<?php bloginfo('charset'); ?>">
@@ -48,7 +41,7 @@
                     <?php endif; ?>
                     <header id="kratos-header-section"<?php if(kratos_option('head_mode')!='pic') echo ' class="color-banner" style="background:rgba('.kratos_option('banner_color').')"'; ?>>
                         <div class="container">
-                            <div class="nav-header">
+                            <div class="nav-header wow fadeInRight">
                                 <?php if(kratos_option('head_mode')!='pic'): ?>
                                 <div class="color-logo"><a href="<?php echo get_option('home'); ?>"><?php if(!kratos_option('banner_logo')) echo bloginfo('name'); else echo '<img src="'.kratos_option('banner_logo').'">'; ?></a></div>
                                 <?php endif; ?>

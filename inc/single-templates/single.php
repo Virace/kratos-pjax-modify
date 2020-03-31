@@ -8,7 +8,7 @@
 <section id="main" class='<?php echo (kratos_option('side_bar')=='center')?'col-md-12':'col-md-8'; ?>'>
     <?php if(have_posts()){the_post();update_post_caches($posts); ?>
     <article>
-        <div class="kratos-hentry kratos-post-inner clearfix">
+        <div class="kratos-hentry kratos-post-inner wow fadeIn clearfix">
             <header class="kratos-entry-header">
                 <h1 class="kratos-entry-title text-center"><?php the_title(); ?></h1>
                 <div class="kratos-post-meta text-center">

@@ -87,14 +87,12 @@ function kratos_theme_scripts(){
     if(!is_admin()){
         wp_enqueue_style('fontawe',$fadir,array(),'4.7.0');
         wp_enqueue_style('kratos',$cssdir.'/static/css/kratos.min.css',array(),KRATOS_VERSION);
+		   wp_enqueue_style('custom', get_template_directory_uri() . '/custom/custom.css', array(), KRATOS_VERSION);
         wp_enqueue_script('theme-jq',$jqdir,array(),'2.1.4');
         wp_enqueue_script('theme',$jsdir.'/static/js/theme.min.js',array(),KRATOS_VERSION);
         wp_enqueue_script('kratos',$jsdir.'/static/js/kratos.js',array(),KRATOS_VERSION);
+		   wp_enqueue_script('custom', get_template_directory_uri() . '/custom/custom.js', array(), KRATOS_VERSION, true);
         if(kratos_option('page_pjax')) wp_enqueue_script('pjax',$jsdir.'/static/js/pjax.js',array(),KRATOS_VERSION);
-    }
-    if(kratos_option('site_girl')&&!wp_is_mobile()){
-        wp_enqueue_script('live2d',$jsdir.'/static/js/live2d.js',array(),'l2d');
-        wp_enqueue_script('waifu',$jsdir.'/static/js/waifu-tips.js',array(),'1.3');
     }
     if(kratos_option('site_sa')&&!wp_is_mobile()){if(kratos_option('head_mode')=='pic') $site_sa_h = 61; else $site_sa_h = 103;}
     $d2kratos = array(
@@ -576,5 +574,5 @@ function kratos_welcome_notice(){
     global $noticeinfo;
     if(current_user_can('manage_options')) echo $noticeinfo;
 }
-add_action('admin_notices','kratos_admin_notice');
-if(kratos_option('kratos_notice')=="welcome") add_action('welcome_panel','kratos_welcome_notice');
+// add_action('admin_notices','kratos_admin_notice');
+// if(kratos_option('kratos_notice')=="welcome") add_action('welcome_panel','kratos_welcome_notice');

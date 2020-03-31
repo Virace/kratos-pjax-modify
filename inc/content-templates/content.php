@@ -1,4 +1,4 @@
-<article class="kratos-hentry clearfix">
+<article class="kratos-hentry wow fadeIn clearfix">
 <?php if(kratos_option('list_layout')=='old_layout'){ ?>
 <div class="kratos-entry-thumb">
     <?php kratos_blog_thumbnail() ?>
