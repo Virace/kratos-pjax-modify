@@ -78,6 +78,14 @@ function kratos_widgets_init(){
         'before_title'=>'<h4 class="widget-title">',
         'after_title'=>'</h4>'
     ));   
+	register_sidebar(array(
+		'name'          => '文章页面侧栏',
+		'id'=>'sidebar_tool_post',
+		'before_widget'=>'<aside id="%1$s" class="widget %2$s clearfix">',
+		'after_widget'=>'</aside>',
+		'before_title'=>'<h4 class="widget-title">',
+		'after_title'=>'</h4>'
+	));
 }
 add_action('widgets_init','kratos_widgets_init');
 function remove_default_widget(){
@@ -446,11 +454,38 @@ class kratos_widget_comments extends WP_Widget {
         </p><?php
     }
 }
+class kratos_widget_toc extends WP_Widget {
+    function __construct() {
+        $widget_ops = array(
+            'classname'  => 'widget_kratos_toc',
+            'name'       => __('文章目录','moedog'),
+            'description'=> __('Kratos主题特色组件 - 文章目录','moedog')
+        );
+        parent::__construct(false,false,$widget_ops);
+    }
+    function widget($args,$instance){
+        extract($args);
+        $result = '';
+        $title = '文章目录';
+        $toc = wpjam_get_toc();
+        $result .= $before_widget;
+        if($title) $result .= '<h4 class="widget-title">'.$title .'</h4>';
+        $result .= '<div class="tag_clouds">';
+        $result .= $toc;
+        $result .= '</div>';
+        $result .= $after_widget;
+        echo $result;
+    }
+    function update($new_instance,$old_instance){
+        return $new_instance;
+    }
+}
 function kratos_register_widgets(){
     register_widget('kratos_widget_ad'); 
     register_widget('kratos_widget_about'); 
     register_widget('kratos_widget_tags'); 
     register_widget('kratos_widget_posts'); 
     register_widget('kratos_widget_comments'); 
+	register_widget('kratos_widget_toc'); 
 }
 add_action('widgets_init','kratos_register_widgets');

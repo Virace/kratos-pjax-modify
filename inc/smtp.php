@@ -1,25 +1,25 @@
 <?php
 //smtp init
-add_action('phpmailer_init','mail_smtp');
-function mail_smtp($phpmailer){
-    if(kratos_option('mail_smtps')==1){
-        $mail_name = kratos_option('mail_name');
-        $mail_host = kratos_option('mail_host');
-        $mail_port = kratos_option('mail_port');
-        $mail_username = kratos_option('mail_username');
-        $mail_passwd = kratos_option('mail_passwd');
-        $mail_smtpsecure = kratos_option('mail_smtpsecure');
-        $phpmailer->FromName = $mail_name?$mail_name:'Moe-dog Services Team'; 
-        $phpmailer->Host = $mail_host?$mail_host:'smtp.office365.com';
-        $phpmailer->Port = $mail_port?$mail_port:'587';
-        $phpmailer->Username = $mail_username?$mail_username:'no_reply@fczbl.vip';
-        $phpmailer->Password = $mail_passwd?$mail_passwd:'123456789';
-        $phpmailer->From = $mail_username?$mail_username:'no_reply@fczbl.vip';
-        $phpmailer->SMTPAuth = kratos_option('mail_smtpauth')==1?true:false ;
-        $phpmailer->SMTPSecure = $mail_smtpsecure?$mail_smtpsecure:'STARTTLS';
-        $phpmailer->IsSMTP();
-    }
-}
+// add_action('phpmailer_init','mail_smtp');
+// function mail_smtp($phpmailer){
+//     if(kratos_option('mail_smtps')==1){
+//         $mail_name = kratos_option('mail_name');
+//         $mail_host = kratos_option('mail_host');
+//         $mail_port = kratos_option('mail_port');
+//         $mail_username = kratos_option('mail_username');
+//         $mail_passwd = kratos_option('mail_passwd');
+//         $mail_smtpsecure = kratos_option('mail_smtpsecure');
+//         $phpmailer->FromName = $mail_name?$mail_name:'Moe-dog Services Team'; 
+//         $phpmailer->Host = $mail_host?$mail_host:'smtp.office365.com';
+//         $phpmailer->Port = $mail_port?$mail_port:'587';
+//         $phpmailer->Username = $mail_username?$mail_username:'no_reply@fczbl.vip';
+//         $phpmailer->Password = $mail_passwd?$mail_passwd:'123456789';
+//         $phpmailer->From = $mail_username?$mail_username:'no_reply@fczbl.vip';
+//         $phpmailer->SMTPAuth = kratos_option('mail_smtpauth')==1?true:false ;
+//         $phpmailer->SMTPSecure = $mail_smtpsecure?$mail_smtpsecure:'STARTTLS';
+//         $phpmailer->IsSMTP();
+//     }
+// }
 //Comment approved mail
 add_action('comment_unapproved_to_approved','kratos_comment_approved');
 function kratos_comment_approved($comment){

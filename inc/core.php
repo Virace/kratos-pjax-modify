@@ -218,7 +218,7 @@ function kratos_description(){
     if(is_home()||is_front_page()){echo trim(kratos_option('site_description'));}
     elseif(is_category()){$description = strip_tags(category_description());echo trim($description);}
     elseif(is_single()){ 
-        if(get_the_excerpt()){echo get_the_excerpt();}
+        if(has_excerpt() && get_the_excerpt()){echo get_the_excerpt();}
         else{global $post;$description = trim(str_replace(array("\r\n","\r","\n","　"," ")," ",str_replace("\"","'",strip_tags(do_shortcode($post->post_content)))));echo mb_substr($description,0,220,'utf-8');}
     }
     elseif(is_search()){echo '“';the_search_query();global $wp_query;echo '”'.sprintf(__('为您找到结果 %s 个','moedog'),$wp_query->found_posts);}
@@ -232,21 +232,24 @@ function imgnofollow($content){
         if(!empty($matches)){
             $srcUrl = get_option('siteurl');
             for ($i=0;$i<count($matches);$i++){
-                $tag = $matches[$i][0];
-                $tag2 = $matches[$i][0];
                 $url = $matches[$i][0];
-                $noFollow = '';
-                $pattern = '/target\s*=\s*"\s*_blank\s*"/';
-                preg_match($pattern,$tag2,$match,PREG_OFFSET_CAPTURE);
-                if(count($match)<1) $noFollow .= ' target="_blank" ';
-                $pattern = '/rel\s*=\s*"\s*[n|d]ofollow\s*"/';
-                preg_match($pattern, $tag2, $match, PREG_OFFSET_CAPTURE);
-                if(count($match)<1) $noFollow .= ' rel="nofollow" ';
-                $pos = strpos($url,$srcUrl);
-                if($pos===false){
-                    $tag = rtrim ($tag,'>');
-                    $tag .= $noFollow.'>';
-                    $content = str_replace($tag2,$tag,$content);
+                $pos1 = strpos($url,'href="#');
+                if($pos1===false){
+                    $tag = $matches[$i][0];
+                    $tag2 = $matches[$i][0];
+                    $noFollow = '';
+                    $pattern = '/target\s*=\s*"\s*_blank\s*"/';
+                    preg_match($pattern,$tag2,$match,PREG_OFFSET_CAPTURE);
+                    if(count($match)<1) $noFollow .= ' target="_blank" ';
+                    $pattern = '/rel\s*=\s*"\s*[n|d]ofollow\s*"/';
+                    preg_match($pattern, $tag2, $match, PREG_OFFSET_CAPTURE);
+                    if(count($match)<1) $noFollow .= ' rel="nofollow" ';
+                    $pos = strpos($url,$srcUrl);
+                    if($pos===false){
+                        $tag = rtrim ($tag,'>');
+                        $tag .= $noFollow.'>';
+                        $content = str_replace($tag2,$tag,$content);
+                    }
                 }
             }
         }

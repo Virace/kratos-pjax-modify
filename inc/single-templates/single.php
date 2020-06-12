@@ -1,7 +1,7 @@
 <?php if(kratos_option('side_bar')=='left_side'){ ?>
 <aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
     <div id="sidebar" class="affix-top">
-        <?php dynamic_sidebar('sidebar_tool'); ?>
+        <?php dynamic_sidebar('sidebar_tool_post'); ?>
     </div>
 </aside>
 <?php } ?>
@@ -73,7 +73,7 @@
 <?php if(kratos_option('side_bar')=='right_side'){ ?>
     <aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
         <div id="sidebar" class="affix-top">
-            <?php dynamic_sidebar('sidebar_tool'); ?>
+            <?php dynamic_sidebar('sidebar_tool_post'); ?>
         </div>
     </aside>
 <?php } ?>

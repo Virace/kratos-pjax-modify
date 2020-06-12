@@ -41,7 +41,7 @@
                     <?php endif; ?>
                     <header id="kratos-header-section"<?php if(kratos_option('head_mode')!='pic') echo ' class="color-banner" style="background:rgba('.kratos_option('banner_color').')"'; ?>>
                         <div class="container">
-                            <div class="nav-header wow fadeInRight">
+                            <div class="nav-header animated fadeInRight">
                                 <?php if(kratos_option('head_mode')!='pic'): ?>
                                 <div class="color-logo"><a href="<?php echo get_option('home'); ?>"><?php if(!kratos_option('banner_logo')) echo bloginfo('name'); else echo '<img src="'.kratos_option('banner_logo').'">'; ?></a></div>
                                 <?php endif; ?>

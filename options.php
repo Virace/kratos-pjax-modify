@@ -18,6 +18,16 @@ function optionsframework_options(){
         'std'=>'https://cdn.jsdelivr.net/gh/xb2016/kratos-pjax@'.KRATOS_VERSION.'/static/images/favicon.ico',
         'type'=>'upload');
     $options[] = array(
+        'name'=>__('站点logo','moedog'),
+        'id'=>'site_logo',
+        'std'=>'https://cdn.jsdelivr.net/gh/xb2016/kratos-pjax@'.KRATOS_VERSION.'/static/images/favicon.ico',
+        'type'=>'upload');
+    $options[] = array(
+        'name'=>__('站点标题','moedog'),
+        'id'=>'site_title',
+        'std'=>get_bloginfo(),
+        'type'=>'text');
+    $options[] = array(
         'name'=>__('通知设置','moedog'),
         'desc'=>__('选择后台主题通知 (更新/帮助等) 的出现位置','moedog'),
         'id'=>'kratos_notice',
